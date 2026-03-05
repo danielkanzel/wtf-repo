@@ -32,5 +32,7 @@ jobs:
         with:
           files: |
             archive.tar.gz
+          name: Release ${{ steps.generate_release_tag.outputs.release_tag }}
+          tag: ${{ steps.generate_release_tag.outputs.release_tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
