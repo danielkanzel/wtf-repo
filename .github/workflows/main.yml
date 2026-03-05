@@ -33,6 +33,6 @@ jobs:
           files: |
             archive.tar.gz
           name: Release
-          tag: 0.0.1
+          tag: 'files'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
