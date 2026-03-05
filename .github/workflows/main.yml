@@ -38,22 +38,28 @@ jobs:
 
       - name: Save archive
         run: |
-          cp archive.tar.gz archive.txt
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git pull
           git add . 
           git commit -m "hehe" 
           git push || true
-
+          
+      - name: Generate release tag
+        id: generate_release_tag
+        uses: amitsingh-007/next-release-tag@v6.3.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tag_prefix: 'v'
+          tag_template: 'yyyy.mm.dd.i'
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
             archive.tar.gz
-          tag_name: 2
-          name: "Release 2"
+          tag_name: ${{ steps.generate_release_tag.outputs.next_release_tag }}
+          name: "Release ${{ steps.generate_release_tag.outputs.next_release_tag }}"
           draft: false
           prerelease: false
           overwrite_files: true
