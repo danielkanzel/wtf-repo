@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: 'razzant/ouroboros_cloud'
-          token: ${{ secrets.GH_PAT }} # Use your custom secret name
+          token: ${{ secrets.PAT }} # Use your custom secret name
           path: './ouroboros_cloud' # Directory to clone into
 
       # Runs a single command using the runners shell
