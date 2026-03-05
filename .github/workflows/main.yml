@@ -28,11 +28,9 @@ jobs:
         run:  tar -czf - ouroboros_cloud | gpg -c --batch --passphrase "${{ secrets.PSWD }}" > archive.tar.gz
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: |
             archive.tar.gz
-          name: Release
-          tag: 'files'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
