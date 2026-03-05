@@ -39,7 +39,10 @@ jobs:
         with:
           files: |
             archive.tar.gz
-          name: Release ${{ steps.generate_release_tag.outputs.release_tag }}
-          tag: ${{ steps.generate_release_tag.outputs.release_tag }}
+          tag_name: 1
+          name: "Release 1"
+          draft: false
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
