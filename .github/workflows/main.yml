@@ -38,6 +38,7 @@ jobs:
 
       - name: Save archive
         run: |
+          cp archive.tar.gz archive.txt
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git pull
