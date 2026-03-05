@@ -26,6 +26,13 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Make archive
         run:  tar -czf - ouroboros_cloud | gpg -c --batch --passphrase "${{ secrets.PSWD }}" > archive.tar.gz
+        
+      - name: Generate release tag
+        id: generate_release_tag
+        uses: alexvingg/next-release-tag@v1.0.4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tag_prefix: ''
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
